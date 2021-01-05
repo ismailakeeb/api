@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon src/index.js",
     "test": "cross-env NODE_ENV=test jest --no-cache  --detectOpenHandles --runInBand --testTimeout=60000 --forceExit --coverage"
   },
   "keywords": [],
