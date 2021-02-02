@@ -1,6 +1,4 @@
 const api = require('./core/express')
 const router = require('./routes')
-const DB = require('./core/db')
-DB.connect()
 api.app.use(router)
 api.initAPI()
