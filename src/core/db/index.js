@@ -12,6 +12,23 @@ mongoose.connection.on('error', (err) => {
     console.log(`Could not connect to  DB because of ${err}`)
     process.exit(-1)
 })
+const db = mongoose.createConnection(config.mongoURL,  {
+    poolSize: 10,
+    keepAlive: 1,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+    //  useUnifiedTopology: true
+})
+db.then(conn => {
+    console.log(`Mongodb connected successfully.`)
+})
+db.on('connected', () => {
+    console.log('Db connected successfully')
+})
+
+module.exports = db
+/*
 
 exports.connect = () => {
     let mURL = config.mongoURL
@@ -27,4 +44,4 @@ exports.connect = () => {
             resolve(mongoose.connection)
         }).catch(err => reject(err))
     })
-}
+}*/
