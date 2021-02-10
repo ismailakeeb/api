@@ -3,25 +3,28 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-
   "scripts": {
     "dev": "./node_modules/.bin/nodemon src/index.js",
     "test": "cross-env NODE_ENV=test jest --no-cache  --detectOpenHandles --runInBand --testTimeout=60000 --forceExit --coverage"
   },
   "keywords": [],
-  "author": "Akeeb Ismail <ismailakeeb@gmail/>",
+  "author": "Akeeb Ismail <ismailakeeb@gmail.com/>",
   "license": "ISC",
   "dependencies": {
     "@grpc/proto-loader": "^0.5.5",
+    "app-root-path": "^3.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "grpc": "^1.24.4",
     "grpc-caller": "^0.13.0",
     "helmet": "^4.3.1",
+    "joi": "^17.3.0",
+    "jsonwebtoken": "^8.5.1",
     "mali": "^0.21.0",
     "mongoose": "^5.11.10",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

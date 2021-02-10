@@ -25,10 +25,10 @@ const initAPI = () => {
             process.exit(-1)
         }
         const path = require('path')
-        let client = caller('127.0.0.1:50051', path.resolve(__dirname, '../../../youid-proto/sample/sample.proto'), 'SampleService')
-         client.sayHello('Akeeb').then(res => {
+        //let client = caller('127.0.0.1:50051', path.resolve(__dirname, '../../../youid-proto/sample/sample.proto'), 'SampleService')
+         /*client.sayHello('Akeeb').then(res => {
              console.log('service reponse', res)
-         })
+         })*/
         console.log('API running on '+ config.port)
 
     })
