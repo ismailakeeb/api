@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const helmet = require('helmet')
 const http = require('http')
-let caller = require('grpc-caller')
+const {sub} = require('../../services/queue')
 const config = require('../../config')
 const rawBodySaver = function (req, _res, buf, encoding) {
     if (buf && buf.length)req.rawBody = buf.toString(encoding || 'utf8');
@@ -19,16 +19,16 @@ app.use(helmet())
 
 const initAPI = () => {
     const server = http.createServer(app)
-    server.listen(config.port, (err) => {
+    server.listen(config.port, async (err) => {
         if (err) {
             console.log(`API could not be start `, err)
             process.exit(-1)
         }
         const path = require('path')
-        //let client = caller('127.0.0.1:50051', path.resolve(__dirname, '../../../youid-proto/sample/sample.proto'), 'SampleService')
-         /*client.sayHello('Akeeb').then(res => {
-             console.log('service reponse', res)
-         })*/
+        const subcriber = await sub({exchange: 'YOUID-ADMIN', queueName: 'youid.admin', routineKeys: ['template.published', 'template.updated']})
+        subcriber.start(msg => {
+            console.log(msg.content.toString())
+        })
         console.log('API running on '+ config.port)
 
     })

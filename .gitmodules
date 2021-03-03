@@ -1,0 +1,3 @@
+[submodule "youid-proto"]
+	path = youid-proto
+	url = https://git.heroku.com/youid-protos.git
