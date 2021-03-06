@@ -1,7 +1,7 @@
 const amqp = require('amqplib')
 const config = require('../../config')
 const addEvents = require('./add-events')
-const {type} = require('./contants')
+const {type, exchange} = require('./contants')
 const QError = require('./error')
 
 /**
@@ -13,7 +13,7 @@ const QError = require('./error')
  * @return A Publisher
  */
 const publisher = options => {
-    const {onError, onClose, exchange} = options
+    const {onError, onClose} = options
     let connection
     let channel
     const start = async () => {

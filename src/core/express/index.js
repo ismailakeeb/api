@@ -24,10 +24,14 @@ const initAPI = () => {
             console.log(`API could not be start `, err)
             process.exit(-1)
         }
-        const path = require('path')
-        const subcriber = await sub({exchange: 'YOUID-ADMIN', queueName: 'youid.admin', routineKeys: ['template.published', 'template.updated']})
-        subcriber.start(msg => {
+        const subscriber = await sub()
+        subscriber.start(msg => {
+            const channelName = msg.fields.routingKey
+            console.log(channelName)
+            const {event} = JSON.parse(msg.content.toString())
             console.log(msg.content.toString())
+            subscriber.ack(msg)
+
         })
         console.log('API running on '+ config.port)
 

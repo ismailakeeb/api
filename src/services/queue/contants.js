@@ -1,5 +1,6 @@
 module.exports = {
     type: 'topic',
-    exchange: 'YOUID-API-SERVICE',
-    routingKey: 'account.created',
+    exchange: 'YOUID',
+    queueName: 'YOUID-ADMIN',
+    routingKeys: ['template.published', 'template.published.updated', 'payment.failed']
 }

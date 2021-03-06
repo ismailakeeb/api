@@ -2,7 +2,7 @@ const amqp = require('amqplib')
 const config = require('../../config')
 const addEvents = require('./add-events')
 const QError= require('./error')
-const {type} = require('./contants')
+const {type, exchange, queueName} = require('./contants')
 
 /**
  * Create a Subscriber with the given options.
@@ -14,7 +14,8 @@ const {type} = require('./contants')
  */
 
 const subscriber = options => {
-    const {routingKeys, onError, onClose, exchange, queueName} = options
+    const {routingKeys, onError, onClose} = options
+    console.log('q name', queueName, routingKeys)
     let connection
     let channel
     let queue

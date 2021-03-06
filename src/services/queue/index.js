@@ -1,4 +1,6 @@
+const {routingKeys} = require('./contants')
+const sub = require('./subscriber')
 module.exports = {
-    sub: require('./subscriber'),
+    sub: () => sub({routingKeys}),
     pub: require('./publisher')
 }
